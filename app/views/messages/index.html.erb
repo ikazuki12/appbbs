@@ -1,0 +1,42 @@
+<h1>投稿一覧</h1>
+
+<%= @user %>
+<table>
+  <% @messages.each do |message| %>
+  <tr>
+    <td>
+      <% message_user = User.find(message.user_id) %>
+      投稿者：<%= message_user.name %>
+      カテゴリー：<%= message.category %>
+    </td>
+  </tr>
+  <tr>
+    <td>件名：<%= message.subject%></td>
+  </tr>
+  <tr>
+    <td>本文<pre><%= message.text %></pre></td>
+  </tr>
+  <tr>
+    <td>----------コメント----------</td>
+  </tr>
+  <% message.comments.each do |comment| %>
+  <tr>
+    <td>
+      <% comment_user = User.find(comment.user_id) %>
+      名前:<%= comment_user.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>本文<pre><%= comment.text %></pre></td>
+  </tr>
+  <% end %>
+  <%= form_for [message, message.comments.build] do |f| %>
+  <tr>
+    <td><%= f.text_area :text %></td>
+  </tr>
+  <tr>
+    <td><%= f.submit 'コメント' %></td>
+  </td>
+  <% end %>
+  <% end %>
+</table>

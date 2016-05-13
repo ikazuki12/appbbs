@@ -1,0 +1,36 @@
+<h1>社員一覧</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>ID</th>
+    <th>Company</th>
+    <th>Department</th>
+    <th>Log in</th>
+  <tr/>
+  <% @users.each do |user| %>
+  <tbody class="target">
+    <tr>
+      <td><%= link_to user.name, edit_user_path(user.id) %></td>
+      <td><%= user.login_id %></td>
+      <% branch = Branch.find_by id: user.branch_id %>
+      <td><%= branch.name %></td>
+      <% position = Position.find_by id: user.position_id %>
+      <td><%= position.name %></td>
+      <% if user.stopped %>
+        <th><%= button_tag 'ON', {:calss => 'stop', 'data-id' => user.id, 'data-stopped' => user.stopped} %></th>
+      <% else %>
+        <th><%= button_tag 'OFF', {:calss => 'stop', 'data-stopped' => user.stopped} %></th>
+      <% end %>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<script>
+$(function() {
+  $("[type=submit]").click(function() {
+    alert('Click');
+  })
+})
+</script>

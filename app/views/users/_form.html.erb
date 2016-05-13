@@ -1,0 +1,31 @@
+<%= form_for @user do |f| %>
+
+<p>
+  <%= f.label :login_id %><br>
+  <%= f.text_field :login_id %>
+</p>
+
+<p>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %>
+</p>
+
+<p>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</p>
+
+<p>
+  <%= f.label :branch_id %><br>
+  <%= f.select :branch_id,  Branch.all.map{|branch| [branch.name, branch.id]} %>
+</p>
+
+<p>
+  <%= f.label :position_id %><br>
+  <%= f.select :position_id,  Position.all.map{|position| [position.name, position.id] } %></p>
+
+<p>
+  <%= f.submit %>
+</p>
+
+<% end %>

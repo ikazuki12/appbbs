@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  login_id: MyString
+  password: MyString
+  name: MyString
+  branch_id: 
+  position_id: 
+  stopped: false
+
+two:
+  login_id: MyString
+  password: MyString
+  name: MyString
+  branch_id: 
+  position_id: 
+  stopped: false
